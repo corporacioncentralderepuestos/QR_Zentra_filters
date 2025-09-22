@@ -1,0 +1,14 @@
+[build]
+  publish = "public"
+
+# Reescribe /p/:sku a la página estática correspondiente sin cambiar la URL en el navegador
+[[redirects]]
+  from = "/p/:sku"
+  to = "/sku/:sku/index.html"
+  status = 200
+
+# Redirecciones canónicas opcionales (descomenta si prefieres 301 a la URL canónica)
+# [[redirects]]
+#   from = "/p/ABC123"
+#   to = "/sku/ABC123/"
+#   status = 301
