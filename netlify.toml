@@ -1,14 +1,12 @@
 [build]
   publish = "public"
+  command = "pip3 install -r requirements.txt && python3 make_sku_pages.py --csv data/data/skus.csv --public public && python3 build_redirects.py --csv data/data/skus.csv --out _redirects"
 
-# Reescribe /p/:sku a la página estática correspondiente sin cambiar la URL en el navegador
-[[redirects]]
-  from = "/p/:sku"
-  to = "/sku/:sku/index.html"
-  status = 200
+[build.environment]
+  PYTHON_VERSION = "3.11"
 
-# Redirecciones canónicas opcionales (descomenta si prefieres 301 a la URL canónica)
+# Si NO quieres usar _redirects por SKU, usa esta regla genérica y borra _redirects
 # [[redirects]]
-#   from = "/p/ABC123"
-#   to = "/sku/ABC123/"
-#   status = 301
+#   from = "/p/:sku"
+#   to = "/sku/:sku/index.html"
+#   status = 200
