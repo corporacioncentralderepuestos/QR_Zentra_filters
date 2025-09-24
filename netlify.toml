@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "python3 -m pip install --upgrade pip && pip3 install -r requirements.txt && python3 make_sku_pages.py --csv data/data_skus_filtroszentra.csv --public public && python3 build_redirects.py --csv data/data_skus_filtroszentra.csv --out _redirects"
+  command = "python3 -m pip install --upgrade pip && pip3 install -r requirements.txt && python3 make_sku_pages.py --csv data/skus.csv --public public && python3 build_redirects.py --csv data/skus.csv --out _redirects"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
