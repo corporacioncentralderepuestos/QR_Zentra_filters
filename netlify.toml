@@ -1,11 +1,11 @@
 [build]
   publish = "public"
-  command = "pip3 install -r requirements.txt && python3 make_sku_pages.py --csv data/data/skus.csv --public public && python3 build_redirects.py --csv data/data/skus.csv --out _redirects"
+  command = "python3 -m pip install --upgrade pip && pip3 install -r requirements.txt && python3 make_sku_pages.py --csv data/data_skus_filtroszentra.csv --public public && python3 build_redirects.py --csv data/data_skus_filtroszentra.csv --out _redirects"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
 
-# Si NO quieres usar _redirects por SKU, usa esta regla genérica y borra _redirects
+# Si prefieres NO usar _redirects por SKU y quieres una sola regla genérica:
 # [[redirects]]
 #   from = "/p/:sku"
 #   to = "/sku/:sku/index.html"
