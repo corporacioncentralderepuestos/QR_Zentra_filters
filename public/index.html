@@ -3,37 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo aplicativo de Filtros Zentra</title>
-  <link rel="preload" as="style" href="/styles.css">
+  <title>Catálogo de Filtros Zentra</title>
+  <meta name="description" content="Busca la ficha técnica por código o escanea el QR del empaque.">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#111111">
 </head>
 <body>
   <header class="container">
-    <a href="/" class="brand">
-    <img class="logo" src="/assets/zentra-logo.png" alt="Filtros Zentra">
-  </a>
-  <h1>Catálogo de Filtros – Zentra</h1>
-  ...
-</header>
-    <h1>Catálogo aplicativo de Filtros Zentra</h1>
-    <p>Escanea un QR del empaque o busca un SKU directo aquí.</p>
-    <form action="/p/" method="get" onsubmit="event.preventDefault(); window.location.href='/p/' + document.getElementById('sku').value.trim();">
-      <input id="sku" type="text" placeholder="Ej: ABC123" aria-label="SKU">
+    <div class="brand" style="display:flex;align-items:center;gap:12px;">
+      <a href="/"><img class="logo" src="/assets/zentra-logo.png" alt="Logo Filtros Zentra" style="height:40px;width:auto;display:block"></a>
+      <h1 style="margin:0">Catálogo de Filtros – Zentra</h1>
+    </div>
+
+    <p>Escanea el QR del empaque o busca el código (slug) aquí.</p>
+    <form id="search-form" onsubmit="return goToSku(event)">
+      <label for="sku" class="sr-only">Código o slug</label>
+      <input id="sku" type="text" placeholder="Ej: 96879797" aria-label="Código o slug" required autofocus>
       <button type="submit">Ir</button>
     </form>
   </header>
+
   <main class="container">
     <section>
       <h2>Cómo funciona</h2>
       <ol>
-        <li>El empaque trae un QR, escanealo o escribelo en la barra de busqueda en la parte superior.</li>
-        <li>El QR te redirecciona la ficha tecnica del filtro.</li>
+        <li>El empaque trae un QR: escanéalo o escribe el código arriba.</li>
+        <li>Te lleva a la ficha técnica del producto.</li>
       </ol>
     </section>
   </main>
+
   <footer class="container">
-    <small>© <span id="y"></span> Zentra </small>
+    <small>© <span id="y"></span> Zentra</small>
   </footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+
+  <script>
+    // Redirige a /p/<slug> normalizando espacios y mayúsculas
+    function goToSku(e){
+      e.preventDefault();
+      const v = document.getElementById('sku').value.trim();
+      if(!v) return false;
+      const slug = v.toUpperCase().replace(/[^A-Z0-9-]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+      if(!slug) return false;
+      window.location.href = '/p/' + encodeURIComponent(slug);
+      return false;
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
