@@ -1,5 +1,6 @@
 # tools/make_sku_pages.py
 import os, re, argparse, pandas as pd
+LOGO = "/assets/zentra-logo.png"
 from jinja2 import Template
 
 parser = argparse.ArgumentParser(description="Generar páginas por SKU/SLUG desde CSV")
