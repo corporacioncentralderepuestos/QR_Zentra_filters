@@ -17,3 +17,6 @@ th,td{border-bottom:1px solid #eee;padding:8px;text-align:left}
 img{max-width:100%;height:auto;border-radius:12px;border:1px solid #eee}
 footer{border-top:1px solid #eee;background:#fafafa;margin-top:24px}
 @media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+.brand { display:inline-flex; align-items:center; gap:8px; text-decoration:none; margin-right:12px }
+.logo { height: 36px; width:auto; display:block }
+@media (min-width:720px){ .logo{ height:42px } }
