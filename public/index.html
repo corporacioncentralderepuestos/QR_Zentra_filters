@@ -9,6 +9,12 @@
 </head>
 <body>
   <header class="container">
+    <a href="/" class="brand">
+    <img class="logo" src="/assets/zentra-logo.svg" alt="Filtros Zentra">
+  </a>
+  <h1>Catálogo de Filtros – Zentra</h1>
+  ...
+</header>
     <h1>Catálogo aplicativo de Filtros Zentra</h1>
     <p>Escanea un QR del empaque o busca un SKU directo aquí.</p>
     <form action="/p/" method="get" onsubmit="event.preventDefault(); window.location.href='/p/' + document.getElementById('sku').value.trim();">
@@ -20,14 +26,13 @@
     <section>
       <h2>Cómo funciona</h2>
       <ol>
-        <li>El empaque trae un QR que apunta a <code>https://tudominio.com/p/&lt;SKU&gt;</code>.</li>
-        <li>Netlify reescribe a la landing estática del SKU.</li>
-        <li>Actualizas contenido sin reimprimir etiquetas.</li>
+        <li>El empaque trae un QR, escanealo o escribelo en la barra de busqueda en la parte superior.</li>
+        <li>El QR te redirecciona la ficha tecnica del filtro.</li>
       </ol>
     </section>
   </main>
   <footer class="container">
-    <small>© <span id="y"></span> Tu Marca</small>
+    <small>© <span id="y"></span> Zentra </small>
   </footer>
 <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
