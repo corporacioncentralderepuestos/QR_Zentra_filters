@@ -10,18 +10,17 @@
   <meta name="theme-color" content="#111111">
 </head>
 <body>
- <header class="container" style="text-align:center">
-  <div class="brand" style="display:flex; flex-direction:column; align-items:center; gap:8px;">
-    <a href="/">
-      <img class="logo" src="/assets/zentra-logo.png" alt="Logo Filtros Zentra" style="height:100px; width:auto; display:block">
-    </a>
-    <h1 style="margin:0">Catálogo de Filtros</h1>
-  </div>
-</header>
+  <header class="container">
+    <div class="brand">
+      <a href="/">
+        <img class="logo" src="/assets/zentra-logo.png" alt="Logo Filtros Zentra">
+      </a>
+      <h1>Catálogo de Filtros</h1>
+    </div>
 
+    <p class="lead">Escanea el QR del empaque o busca el código (slug) aquí.</p>
 
-    <p>Escanea el QR del empaque o busca el código (slug) aquí.</p>
-    <form id="search-form" onsubmit="return goToSku(event)">
+    <form id="search-form" class="search" onsubmit="return goToSku(event)">
       <label for="sku" class="sr-only">Código o slug</label>
       <input id="sku" type="text" placeholder="Ej: 96879797" aria-label="Código o slug" required autofocus>
       <button type="submit">Ir</button>
@@ -29,7 +28,7 @@
   </header>
 
   <main class="container">
-    <section>
+    <section class="card">
       <h2>Cómo funciona</h2>
       <ol>
         <li>El empaque trae un QR: escanéalo o escribe el código arriba.</li>
@@ -43,12 +42,15 @@
   </footer>
 
   <script>
-    // Redirige a /p/<slug> normalizando espacios y mayúsculas
+    // Redirige a /p/<slug> normalizando espacios y caracteres
     function goToSku(e){
       e.preventDefault();
       const v = document.getElementById('sku').value.trim();
       if(!v) return false;
-      const slug = v.toUpperCase().replace(/[^A-Z0-9-]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+      const slug = v.toUpperCase()
+        .replace(/[^A-Z0-9-]/g,'-')
+        .replace(/-+/g,'-')
+        .replace(/^-|-$/g,'');
       if(!slug) return false;
       window.location.href = '/p/' + encodeURIComponent(slug);
       return false;
