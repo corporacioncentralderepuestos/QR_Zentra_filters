@@ -10,11 +10,15 @@
   <meta name="theme-color" content="#111111">
 </head>
 <body>
-  <header class="container">
-    <div class="brand" style="display:flex;align-items:center;gap:12px;">
-      <a href="/"><img class="logo" src="/assets/zentra-logo.png" alt="Logo Filtros Zentra" style="height:100px;width:auto;display:block"></a>
-      <h1 style="margin:0">Catálogo de Filtros – Zentra</h1>
-    </div>
+ <header class="container" style="text-align:center">
+  <div class="brand" style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <a href="/">
+      <img class="logo" src="/assets/zentra-logo.png" alt="Logo Filtros Zentra" style="height:100px; width:auto; display:block">
+    </a>
+    <h1 style="margin:0">Catálogo de Filtros – Zentra</h1>
+  </div>
+</header>
+
 
     <p>Escanea el QR del empaque o busca el código (slug) aquí.</p>
     <form id="search-form" onsubmit="return goToSku(event)">
